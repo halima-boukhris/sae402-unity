@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     public FloatVariable maxHealth;
 
     [ReadOnlyInspector]
-    public float currentHealth = 0f;
+    public float currentHealth = 1;
 
     public SpriteRenderer spriteRenderer;
 
