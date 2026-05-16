@@ -89,6 +89,11 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player Health")]
     public PlayerHealth playerHealth;
 
+    [SerializeField]
+private PlaySoundAtEventChannel onJumpSFX;
+[SerializeField]
+private AudioClip jumpSound;
+
     private void OnEnable()
     {
         onTogglePauseEvent.OnEventRaised += OnPauseEvent;
@@ -229,6 +234,7 @@ public class PlayerMovement : MonoBehaviour
         if (!shortJump)
         {
             jumpCount++;
+            if (onJumpSFX != null) onJumpSFX.Raise(jumpSound, transform.position);
             isJumping = true;
             if (jumpCount > 1)
             {

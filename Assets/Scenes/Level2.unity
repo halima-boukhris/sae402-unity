@@ -8171,6 +8171,9 @@ MonoBehaviour:
   landingFastShakeInfo: {fileID: 11400000, guid: 9ad9c4a8bb991b44a876790b573d0196, type: 2}
   onTogglePauseEvent: {fileID: 11400000, guid: b7a6509538354b74cbca707412cc0d24, type: 2}
   onDebugTeleportEvent: {fileID: 11400000, guid: 20f5f2f5c47759b4ca055685870b4a2a, type: 2}
+  playerHealth: {fileID: 0}
+  onJumpSFX: {fileID: 11400000, guid: cdb31aea211f71549a57205694811885, type: 2}
+  jumpSound: {fileID: 8300000, guid: 9951b6c0cdf7e4624991c41d123c585a, type: 3}
 --- !u!114 &814072431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8190,6 +8193,11 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: 128a5caa38b25da4b8d554b3e6931d20, type: 2}
   onDebugDeathEvent: {fileID: 11400000, guid: 68cc81557b33a794c96545249fb9ff04, type: 2}
   onPlayerDeath: {fileID: 11400000, guid: e0b8ec73eeeaa0b47ab72ed51288e42c, type: 2}
+  estMort: 0
+  onCameraShake: {fileID: 0}
+  shakeInfo: {fileID: 0}
+  onDeathSFX: {fileID: 11400000, guid: cdb31aea211f71549a57205694811885, type: 2}
+  deathSound: {fileID: 8300000, guid: f781273980f919e48a520160e8f27c2b, type: 3}
 --- !u!61 &814072432
 BoxCollider2D:
   m_ObjectHideFlags: 0
