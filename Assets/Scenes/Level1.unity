@@ -29681,6 +29681,8 @@ MonoBehaviour:
   onTogglePauseEvent: {fileID: 11400000, guid: b7a6509538354b74cbca707412cc0d24, type: 2}
   onDebugTeleportEvent: {fileID: 11400000, guid: 20f5f2f5c47759b4ca055685870b4a2a, type: 2}
   playerHealth: {fileID: 814072431}
+  onJumpSFX: {fileID: 11400000, guid: cdb31aea211f71549a57205694811885, type: 2}
+  jumpSound: {fileID: 8300000, guid: 9951b6c0cdf7e4624991c41d123c585a, type: 3}
 --- !u!114 &814072431
 MonoBehaviour:
   m_ObjectHideFlags: 0
