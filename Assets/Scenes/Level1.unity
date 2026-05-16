@@ -55467,8 +55467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb863f666f9347458097882f5b984a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameOverManager
-  onPlayerDeath: {fileID: 0}
-  panelGameOver: {fileID: 0}
+  onPlayerDeath: {fileID: 11400000, guid: e0b8ec73eeeaa0b47ab72ed51288e42c, type: 2}
+  panelGameOver: {fileID: 1720046543}
 --- !u!4 &1255952456
 Transform:
   m_ObjectHideFlags: 0
@@ -66884,6 +66884,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7665061981411180109, guid: 8adb7e3f4486602478f1493a1f45e9dc, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
     - target: {fileID: 7665061981411180109, guid: 8adb7e3f4486602478f1493a1f45e9dc, type: 3}
       propertyPath: m_Name
       value: PlayerStunEffectContainer
