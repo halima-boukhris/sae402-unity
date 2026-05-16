@@ -19,12 +19,13 @@ public class CameraFollow : MonoBehaviour
     }
 
     void LateUpdate()
-    {
-        if (!target) return;
-
-        nextPosition = GetNextPosition();
-        transform.position = Vector3.SmoothDamp(transform.position, nextPosition, ref velocity, smoothTime);
-    }
+{
+    if (!target) return;
+    if (target.GetComponent<PlayerHealth>() != null && 
+        target.GetComponent<PlayerHealth>().estMort) return;
+    nextPosition = GetNextPosition();
+    transform.position = Vector3.SmoothDamp(transform.position, nextPosition, ref velocity, smoothTime);
+}
 
     public Vector3 GetNextPosition()
     {
