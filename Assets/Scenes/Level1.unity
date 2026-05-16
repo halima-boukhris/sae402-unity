@@ -29705,6 +29705,8 @@ MonoBehaviour:
   estMort: 0
   onCameraShake: {fileID: 11400000, guid: 1b81751bea5122a49b0f5a48dcc10219, type: 2}
   shakeInfo: {fileID: 11400000, guid: 9ad9c4a8bb991b44a876790b573d0196, type: 2}
+  onDeathSFX: {fileID: 11400000, guid: cdb31aea211f71549a57205694811885, type: 2}
+  deathSound: {fileID: 8300000, guid: f781273980f919e48a520160e8f27c2b, type: 3}
 --- !u!61 &814072432
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -16,6 +16,10 @@ public class PlayerHealth : MonoBehaviour
     [Header("Camera Shake")]
     public CameraShakeEventChannel onCameraShake;
     public ShakeTypeVariable shakeInfo;
+    [SerializeField]
+private PlaySoundAtEventChannel onDeathSFX;
+[SerializeField]
+private AudioClip deathSound;
     private void Awake()
     {
         estMort = false;
@@ -45,6 +49,7 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         estMort = true;
+        if (onDeathSFX != null) onDeathSFX.Raise(deathSound, transform.position);
         onPlayerDeath?.Raise();
         GetComponent<Rigidbody2D>().simulated = false;
         transform.Rotate(0f, 0f, 45f);
