@@ -29680,6 +29680,7 @@ MonoBehaviour:
   landingFastShakeInfo: {fileID: 11400000, guid: 9ad9c4a8bb991b44a876790b573d0196, type: 2}
   onTogglePauseEvent: {fileID: 11400000, guid: b7a6509538354b74cbca707412cc0d24, type: 2}
   onDebugTeleportEvent: {fileID: 11400000, guid: 20f5f2f5c47759b4ca055685870b4a2a, type: 2}
+  playerHealth: {fileID: 814072431}
 --- !u!114 &814072431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29700,6 +29701,8 @@ MonoBehaviour:
   onDebugDeathEvent: {fileID: 11400000, guid: 68cc81557b33a794c96545249fb9ff04, type: 2}
   onPlayerDeath: {fileID: 11400000, guid: e0b8ec73eeeaa0b47ab72ed51288e42c, type: 2}
   estMort: 0
+  onCameraShake: {fileID: 11400000, guid: 1b81751bea5122a49b0f5a48dcc10219, type: 2}
+  shakeInfo: {fileID: 11400000, guid: 9ad9c4a8bb991b44a876790b573d0196, type: 2}
 --- !u!61 &814072432
 BoxCollider2D:
   m_ObjectHideFlags: 0

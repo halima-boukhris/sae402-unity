@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-    // init position : 0.36 -0.1
+
     [SerializeField]
     private Rigidbody2D rb;
     [SerializeField]
@@ -23,33 +23,49 @@ public class PlayerMovement : MonoBehaviour
     public bool isStunned = false;
 
     [Header("Position")]
+
     public bool isGrounded = false;
     public bool isFloatingGrounded = false;
 
+
+
     public bool isOnFallingPlatform = false;
+
 
     [SerializeField]
     private LayerMask listGroundLayers;
     [SerializeField]
     private Transform groundCheck;
 
+
+
     [SerializeField]
+
     private LayerMask listFloatingPlatformsLayers;
 
     public bool hasCrossedFloatingPlatforms;
+
     private float offsetFloatingPlaformsLayer = 0.2f;
 
     public PlayerContacts playerContacts;
+
     private PlatformEffector2D platformEffector;
 
     [Header("Jump system"), ReadOnlyInspector]
+
     public int jumpCount = 0;
     [SerializeField]
+
     private int nbMaxJumpsAllowed = 2;
+
     private float groundCheckRadius = 0.95f;
+
     [SerializeField, Tooltip("How high the player will jump")]
+
     private float jumpForce;
+
     private bool isJumping = false;
+
 
     private bool isLandingFast = false;
 
@@ -60,7 +76,9 @@ public class PlayerMovement : MonoBehaviour
     private float jumpBufferCounter;
 
     [Header("Broadcast event channels"), SerializeField]
+
     private CameraShakeEventChannel onLandingFastSO;
+
     [SerializeField]
     private ShakeTypeVariable landingFastShakeInfo;
     [SerializeField, Header("Listen to event channels")]
@@ -68,6 +86,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Debug"), SerializeField]
     private VectorEventChannel onDebugTeleportEvent;
+    [Header("Player Health")]
+    public PlayerHealth playerHealth;
 
     private void OnEnable()
     {
@@ -82,11 +102,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (isGamePaused)
-        {
-            return;
-        }
-
+        if (isGamePaused) return;
+        if (playerHealth != null && playerHealth.estMort) return;
         if (!isStunned)
         {
             Controls();
@@ -113,9 +130,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Controls()
     {
+
         moveDirectionX = Input.GetAxis("Horizontal");
 
         if (Input.GetButtonDown("Jump"))
+
         {
             jumpBufferCounter = jumpBufferTime;
         }
@@ -124,19 +143,18 @@ public class PlayerMovement : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
 
+
         if (isJumping && rb.linearVelocity.y < 0)
         {
             isJumping = false;
         }
 
-        if (
-            jumpBufferCounter > 0f && jumpCount < nbMaxJumpsAllowed && (coyoteTimeCounter > 0f || jumpCount >= 1)
-        )
+        if (jumpBufferCounter > 0f && jumpCount < nbMaxJumpsAllowed && (coyoteTimeCounter > 0f || jumpCount >= 1))
         {
             jumpBufferCounter = 0f;
             Jump(false);
         }
-
+        
         if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)
         {
             Jump(true);
@@ -157,6 +175,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     private IEnumerator CrossFloatingPlatforms()
     {
         platformEffector = playerContacts.GetTilePlatformEffector(listFloatingPlatformsLayers);
@@ -165,8 +184,10 @@ public class PlayerMovement : MonoBehaviour
         platformEffector.colliderMask |= 1 << gameObject.layer;
     }
 
+
     private void FixedUpdate()
     {
+
         isGrounded = IsGrounded();
         isFloatingGrounded = IsFloatingGrounded();
         hasCrossedFloatingPlatforms = HasCrossedFloatingPlatforms();
@@ -175,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Move();
         }
+
     }
 
     private void Move()
@@ -203,12 +225,11 @@ public class PlayerMovement : MonoBehaviour
     {
         float jumpPower = shortJump ? rb.linearVelocity.y * 0.5f : jumpForce;
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpPower);
-
+        
         if (!shortJump)
         {
             jumpCount++;
             isJumping = true;
-
             if (jumpCount > 1)
             {
                 animator.SetTrigger("DoubleJump");
@@ -219,42 +240,25 @@ public class PlayerMovement : MonoBehaviour
             coyoteTimeCounter = 0f;
         }
     }
-
     public bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(
-            groundCheck.position,
-            bc.bounds.size.x / 2 * groundCheckRadius,
-            listGroundLayers
-        );
+        return Physics2D.OverlapCircle(groundCheck.position, bc.bounds.size.x / 2 * groundCheckRadius, listGroundLayers);
     }
-
     private bool IsFloatingGrounded()
     {
-        return Physics2D.OverlapCircle(
-            groundCheck.position,
-            bc.bounds.size.x / 2 * groundCheckRadius,
-            listFloatingPlatformsLayers
-        );
+        return Physics2D.OverlapCircle(groundCheck.position, bc.bounds.size.x / 2 * groundCheckRadius, listFloatingPlatformsLayers);
     }
-
     private bool HasCrossedFloatingPlatforms()
     {
         Collider2D hitFloatingPlatformsLayer = Physics2D.OverlapBox(
             new Vector2(bc.bounds.center.x, bc.bounds.max.y + offsetFloatingPlaformsLayer),
-            new Vector2(bc.size.x, 0.05f),
-            0,
-            listFloatingPlatformsLayers
-        );
-
+            new Vector2(bc.size.x, 0.05f), 0, listFloatingPlatformsLayers);
         return hitFloatingPlatformsLayer != null;
     }
-
     public bool IsFalling()
     {
         return rb.linearVelocity.y <= -jumpForce;
     }
-
     void OnDrawGizmos()
     {
         if (groundCheck != null)
@@ -262,36 +266,30 @@ public class PlayerMovement : MonoBehaviour
             Gizmos.color = Color.black;
             Gizmos.DrawWireSphere(groundCheck.position, bc.bounds.size.x / 2 * groundCheckRadius);
         }
-
         if (bc != null)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube(
                 new Vector2(bc.bounds.center.x, bc.bounds.max.y + offsetFloatingPlaformsLayer),
-                new Vector2(bc.size.x, 0.05f)
-            );
+                new Vector2(bc.size.x, 0.05f));
         }
     }
-
     public void ToggleState(bool state)
     {
         enabled = !state;
     }
-
     private void LandingImpact()
     {
         isLandingFast = false;
         GetComponent<Knockback>().Apply(Vector2.zero, 0);
         onLandingFastSO.Raise(landingFastShakeInfo);
     }
-
     private void OnDebugTeleport(Vector3 newPos)
     {
 #if UNITY_EDITOR
         transform.position = newPos;
 #endif
     }
-
     private void OnDisable()
     {
         onTogglePauseEvent.OnEventRaised -= OnPauseEvent;
