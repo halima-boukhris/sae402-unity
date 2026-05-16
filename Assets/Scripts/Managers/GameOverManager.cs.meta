@@ -3,7 +3,9 @@ guid: efb863f666f9347458097882f5b984a5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - onPlayerDeath: {fileID: 11400000, guid: e0b8ec73eeeaa0b47ab72ed51288e42c, type: 2}
+  - panelGameOver: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
