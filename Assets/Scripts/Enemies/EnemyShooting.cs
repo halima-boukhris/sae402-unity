@@ -27,6 +27,11 @@ public class EnemyShooting : MonoBehaviour
     [Tooltip("Based on right axis and sprite design")]
     public ShootDirection shootDirection;
 
+    [SerializeField]
+ private PlaySoundAtEventChannel onShootSFX;
+[SerializeField]
+private AudioClip shootSound;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -73,5 +78,8 @@ public class EnemyShooting : MonoBehaviour
         Bullet bullet = bulletProjectile.GetComponent<Bullet>();
         bulletProjectile.transform.SetPositionAndRotation(firePoint.position, firePoint.rotation);
         bullet.ResetThyself(shootDirection);
+        if (onShootSFX != null) onShootSFX.Raise(shootSound, transform.position);
+        
+        
     }
 }

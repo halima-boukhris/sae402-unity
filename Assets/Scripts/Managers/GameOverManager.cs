@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
     [Header("Listen to event channels")]
     public VoidEventChannel onPlayerDeath;
+    public GameObject panelGameOver;
 
     private void OnEnable()
     {
@@ -12,11 +14,24 @@ public class GameOverManager : MonoBehaviour
 
     public void OnGameOver()
     {
-        Debug.Log("<size=15><color=#FF0000><b>GameOver!</b></color></size>");
+        panelGameOver.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Rejouer()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnDisable()
     {
         onPlayerDeath.OnEventRaised -= OnGameOver;
+    }
+
+    public void RetourMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
     }
 }
