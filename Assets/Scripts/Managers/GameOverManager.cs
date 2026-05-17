@@ -28,11 +28,10 @@ public class GameOverManager : MonoBehaviour
     {
         onPlayerDeath.OnEventRaised -= OnGameOver;
     }
-    
-    public void RetourMenu()
-{
-    Time.timeScale = 1f;
-    SceneManager.LoadScene("MainMenu");
-}
 
+    public void RetourMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+    }
 }

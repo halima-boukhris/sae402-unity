@@ -69611,14 +69611,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1452846345}
     m_Modifications:
+    - target: {fileID: 879175950831259073, guid: 4f5509a2dc47c8d458c27204332596dc, type: 3}
+      propertyPath: panelGameOver
+      value: 
+      objectReference: {fileID: 1720046543}
     - target: {fileID: 879175950831259078, guid: 4f5509a2dc47c8d458c27204332596dc, type: 3}
       propertyPath: pauseMenuUI
       value: 
       objectReference: {fileID: 90802024}
-    - target: {fileID: 879175950831259082, guid: 4f5509a2dc47c8d458c27204332596dc, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 879175950831259082, guid: 4f5509a2dc47c8d458c27204332596dc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
