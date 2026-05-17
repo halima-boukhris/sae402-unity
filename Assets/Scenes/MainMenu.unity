@@ -462,7 +462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -915.1, y: -406.1}
+  m_AnchoredPosition: {x: -667, y: -392.55}
   m_SizeDelta: {x: 263.4, y: 133.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &678954865
@@ -1139,7 +1139,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 829.3, y: -382.7}
+  m_AnchoredPosition: {x: 681.87, y: -382.7}
   m_SizeDelta: {x: 325.3, y: 152.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1225886996
@@ -1546,7 +1546,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 'Credits '
+          m_StringArgument: Credits
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1759509763

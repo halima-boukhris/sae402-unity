@@ -91,4 +91,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onPlayerDeath: {fileID: 11400000, guid: e0b8ec73eeeaa0b47ab72ed51288e42c, type: 2}
-  panelGameOver: {fileID: 0}
+  panelGameOver: {fileID: 626684633624954258, guid: 3460ad31072144b3bb9e21679516ebe8, type: 3}
