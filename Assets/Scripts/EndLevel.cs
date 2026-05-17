@@ -22,13 +22,19 @@ public class EndLevel : MonoBehaviour
         if (other.gameObject.CompareTag("Player") && !hasBeenTriggered)
         {
             hasBeenTriggered = true;
-            if (nextLevelName != null)
+
+            if (!string.IsNullOrEmpty(nextLevelName))
             {
-                particles.Play();
-                sfxAudioChannel.Raise(audioClip, transform.position);
-                onLevelEnded.Raise(nextLevelName);
-            } else {
-                Debug.LogError("Level missing");
+                // On vérifie chaque objet avant de l'utiliser pour éviter le "NullReference"
+                if (particles != null) particles.Play();
+
+                if (sfxAudioChannel != null) sfxAudioChannel.Raise(audioClip, transform.position);
+
+                if (onLevelEnded != null) onLevelEnded.Raise(nextLevelName);
+            } 
+            else 
+            {
+                Debug.LogError("Nom du prochain niveau (nextLevelName) manquant dans l'Inspector !");
             }
         }
     }
